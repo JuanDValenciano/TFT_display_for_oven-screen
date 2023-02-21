@@ -79,11 +79,11 @@ void setup() {
   Serial.print(F("tft.readID() finds: ID = 0x"));
   Serial.println(ID, HEX);
   Serial.println(F(""));
-Serial.print(F("MCUFRIEND_kbv version: "));
+  Serial.print(F("MCUFRIEND_kbv version: "));
   Serial.print(version/100);
-Serial.print(F("."));
+  Serial.print(F("."));
   Serial.print((version / 10) % 10);
-Serial.print(F("."));
+  Serial.print(F("."));
   Serial.println(version % 10);
   Serial.println(F(""));
   if (ID == 0x0404) {
