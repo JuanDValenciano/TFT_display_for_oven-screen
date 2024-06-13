@@ -27,3 +27,11 @@ Compras:
 RTC
     https://ssdielect.com/modulos-generadores-de-se-al/302-modulo-rtc-ds1307-sin-bateria.html
 
+
+Set Firt submodule....
+
+https://github.com/prenticedavid/MCUFRIEND_kbv/tree/v3.0.0
+
+https://github.com/adafruit/Adafruit-GFX-Library/tree/1.11.9
+
+https://github.com/adafruit/Adafruit_BusIO/tree/1.16.1
