@@ -20,7 +20,11 @@ TFT 3.95
     dependencia:
         https://github.com/adafruit/Adafruit-GFX-Library
         https://github.com/adafruit/Adafruit_BusIO
-
+LVGL v8.3.5
+    https://github.com/lvgl/lvgl/tree/v8.3.5
+Support pending.....
+TFT_eSPI v2.5.0
+    https://github.com/Bodmer/TFT_eSPI/tree/v2.5.0
 
 
 Compras:

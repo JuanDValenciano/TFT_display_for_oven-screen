@@ -1,4 +1,4 @@
-//#define USE_SPECIAL             //check for custom drivers
+#define USE_SPECIAL             //check for custom drivers
 
 #define WR_ACTIVE2  {WR_ACTIVE; WR_ACTIVE;}
 #define WR_ACTIVE4  {WR_ACTIVE2; WR_ACTIVE2;}
@@ -20,7 +20,7 @@
 #endif
 #if !defined(USE_SPECIAL) || defined (USE_SPECIAL_FAIL)
 
-#if 0
+#if 1
 //################################### UNO ##############################
 #elif defined(__AVR_ATmega328P__) || defined(__AVR_ATmega328PB__)       //regular UNO shield on UNO
 //LCD pins  |D7 |D6 |D5 |D4 |D3 |D2 |D1 |D0 | |RD |WR |RS |CS |RST|
