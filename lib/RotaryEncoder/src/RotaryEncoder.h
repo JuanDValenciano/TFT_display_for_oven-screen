@@ -36,7 +36,7 @@ public:
   };
 
   // ----- Constructor -----
-  RotaryEncoder(int pin1, int pin2, LatchMode mode = LatchMode::FOUR0);
+  RotaryEncoder(int pin1, int pin2, int pinSW, LatchMode mode = LatchMode::FOUR0);
 
   // retrieve the current position
   long getPosition();
@@ -50,6 +50,8 @@ public:
   // call this function every some milliseconds or by using an interrupt for handling state changes of the rotary encoder.
   void tick(void);
 
+  bool getSW();
+
   // Returns the time in milliseconds between the current observed
   unsigned long getMillisBetweenRotations() const;
 
@@ -57,7 +59,7 @@ public:
   unsigned long getRPM();
 
 private:
-  int _pin1, _pin2; // Arduino pins used for the encoder.
+  int _pin1, _pin2, _pinSW; // Arduino pins used for the encoder.
   
   LatchMode _mode; // Latch mode from initialization
 
@@ -69,6 +71,14 @@ private:
 
   unsigned long _positionExtTime;     // The time the last position change was detected.
   unsigned long _positionExtTimePrev; // The time the previous position change was detected.
+
+  volatile int _pressSWExt;
+  volatile int _pressSWExtPrev;
+
+  const unsigned long _checkDelayPress = 150; //miliSecond.
+
+  unsigned long _pressExtTime;
+  unsigned long _pressExtTimePrev;
 };
 
 #endif

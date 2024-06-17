@@ -73,5 +73,6 @@ class MCUFRIEND_kbv : public Adafruit_GFX {
 #define TFT_ORANGE      0xFDA0      /* 255, 180,   0 */
 #define TFT_GREENYELLOW 0xB7E0      /* 180, 255,   0 */
 #define TFT_PINK        0xFC9F
+#define TFT_GREY		0xBDF7
 
 #endif

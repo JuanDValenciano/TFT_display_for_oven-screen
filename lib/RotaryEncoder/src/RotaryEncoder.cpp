@@ -38,16 +38,18 @@ const int8_t KNOBDIR[] = {
 
 // ----- Initialization and Default Values -----
 
-RotaryEncoder::RotaryEncoder(int pin1, int pin2, LatchMode mode)
+RotaryEncoder::RotaryEncoder(int pin1, int pin2, int pinSW, LatchMode mode)
 {
   // Remember Hardware Setup
   _pin1 = pin1;
   _pin2 = pin2;
+  _pinSW = pinSW;
   _mode = mode;
 
   // Setup the input pins and turn on pullup resistor
   pinMode(pin1, INPUT_PULLUP);
   pinMode(pin2, INPUT_PULLUP);
+  pinMode(pinSW, INPUT);
 
   // when not started in motion, the current state of the encoder should be 3
   int sig1 = digitalRead(_pin1);
@@ -58,6 +60,9 @@ RotaryEncoder::RotaryEncoder(int pin1, int pin2, LatchMode mode)
   _position = 0;
   _positionExt = 0;
   _positionExtPrev = 0;
+
+  _pressSWExt = 0;
+  _pressSWExtPrev = 0;
 } // RotaryEncoder()
 
 
@@ -112,6 +117,7 @@ void RotaryEncoder::tick(void)
 {
   int sig1 = digitalRead(_pin1);
   int sig2 = digitalRead(_pin2);
+  int sigSW = !(digitalRead(_pinSW));
   int8_t thisState = sig1 | (sig2 << 1);
 
   if (_oldState != thisState) {
@@ -147,8 +153,30 @@ void RotaryEncoder::tick(void)
       break;
     } // switch
   } // if
+
+  _pressSWExtPrev = sigSW;
+  if(_pressSWExtPrev==1){
+    if(_pressSWExt==1){
+      _pressExtTimePrev = millis();
+    }else{
+      _pressExtTime = millis();
+    }
+    _pressSWExt = _pressSWExtPrev;
+  }else{
+    _pressExtTimePrev = 0;
+    _pressExtTime = 0;
+    _pressSWExt = 0;
+  }
 } // tick()
 
+bool RotaryEncoder::getSW(){
+  bool _result = false;
+  if( ((_pressExtTimePrev - _pressExtTime)>(_checkDelayPress))
+      & (_pressSWExt==1)){
+    _result = true;
+  }
+  return _result;
+}
 
 unsigned long RotaryEncoder::getMillisBetweenRotations() const
 {
