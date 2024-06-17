@@ -1,3 +1,18 @@
 [submodule "lib/Adafruit_BusIO"]
 	path = lib/Adafruit_BusIO
 	url = git@github.com:adafruit/Adafruit_BusIO.git
+[submodule "lib/Adafruit-GFX"]
+	path = lib/Adafruit-GFX
+	url = git@github.com:adafruit/Adafruit-GFX-Library.git
+[submodule "lib/MCUFRIEND_kbv"]
+	path = lib/MCUFRIEND_kbv
+	url = https://github.com/prenticedavid/MCUFRIEND_kbv
+[submodule "lib/AT24Cx"]
+	path = lib/AT24Cx
+	url = git@github.com:cyberp/AT24Cx.git
+[submodule "lib/Adafruit_MAX31865"]
+	path = lib/Adafruit_MAX31865
+	url = git@github.com:adafruit/Adafruit_MAX31865.git
+[submodule "lib/RTClib"]
+	path = lib/RTClib
+	url = git@github.com:adafruit/RTClib.git
